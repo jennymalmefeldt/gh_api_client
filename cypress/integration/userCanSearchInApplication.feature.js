@@ -3,7 +3,7 @@ describe("User can search ", () => {
     cy.server()
     cy.route({
       method: "GET",
-      url: "",
+      url: "https://api.github.com/search/users?q=jennymalmefeldt",
       response: "",
     });
     cy.visit("/")
