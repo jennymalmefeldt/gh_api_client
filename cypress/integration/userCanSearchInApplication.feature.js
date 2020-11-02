@@ -1,16 +1,20 @@
 describe("User can search ", () => {
   beforeEach(() => {
-    cy.server()
+    cy.server();
     cy.route({
       method: "GET",
       url: "https://api.github.com/search/users?q=jennymalmefeldt",
-      response: "",
+      response: "index_response.json",
     });
-    cy.visit("/")
-  })
+    cy.visit("/");
+  });
+
   it("for user name and click for response", () => {
-    cy.get("input").type("")
-    cy.get("button").click()
-    cy.get('[data-cy="search"].should("contain", )')
-  })
-})
+    cy.get('[data-cy="username"]').type("Malmefeldt");
+    cy.get('[data-cy="search"]').click();
+
+    cy.get("[data-cy='search-result-68270324']").within(() => {
+      cy.contains("jennymalmefeldt");
+    });
+  });
+});

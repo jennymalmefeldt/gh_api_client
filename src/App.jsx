@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './components/Title'
+import Header from './components/Header'
 import GHSearch from './components/GHSearch'
 import { Container } from 'semantic-ui-react'
 
